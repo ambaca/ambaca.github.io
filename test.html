@@ -18,9 +18,13 @@ body {
 </style>
 
 <body style="height:1050">
+<input type="button" value="1600M" style="position: absolute; left: 350px; margin-top: 10px;" onclick="buttonFunction(1600)" />
+<input type="button" value="800M" style="position: absolute; left: 350px; margin-top: 320;" onclick="buttonFunction(814)" />
+<input type="button" value="100M" style="position: absolute; left: 350px; margin-top: 590px;" onclick="buttonFunction(130)" />
 <!-- input id="button", type="button" value="asd" onclick="buttonFunction()" / -->
 <input id="rangeInput" class="vranger" type="range" value="1000" min="115" max="1615" oninput="rangeInputFunction()" style="position: absolute;left: 0px; width:600" />
-<canvas id="myCanvas" width="250" height="600" style="border:1px solid #000000;position: absolute;" /></canvas>
+<canvas id="myCanvas" width="250" height="620" style="border:1px solid #000000;position: absolute;" /></canvas>
+
 
 <script>
 
@@ -30,10 +34,14 @@ window.addEventListener("load", function(){
     canvasFunction(m);
 });
 
-function buttonFunction() {
-	let myCanvas = document.getElementById('myCanvas');
-	myCanvas = myCanvas.getContext('2d');
-	myCanvas.clearRect(0, 0, myCanvas.canvas.width, myCanvas.canvas.height);
+function buttonFunction(m) {
+	//let myCanvas = document.getElementById('myCanvas');
+	//myCanvas = myCanvas.getContext('2d');
+	//myCanvas.clearRect(0, 0, myCanvas.canvas.width, myCanvas.canvas.height);
+	//console.log(m);
+	let range = document.getElementById('rangeInput');
+	range.value = parseInt(m);
+	rangeInputFunction();
 }
 
 function rangeInputFunction() {
