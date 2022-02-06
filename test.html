@@ -1,0 +1,139 @@
+
+
+
+<html>
+
+<style>
+
+.vranger {
+  margin-top: 300;
+  transform: rotate(270deg);
+  -moz-transform: rotate(270deg); /*do same for other browsers if required*/
+}
+
+body {
+  background-color: #E6E6FA;
+}
+
+</style>
+
+<body style="height:1050">
+<!-- input id="button", type="button" value="asd" onclick="buttonFunction()" / -->
+<input id="rangeInput" class="vranger" type="range" value="1000" min="115" max="1615" oninput="rangeInputFunction()" style="position: absolute;left: 0px; width:600" />
+<canvas id="myCanvas" width="250" height="600" style="border:1px solid #000000;position: absolute;" /></canvas>
+
+<script>
+
+window.addEventListener("load", function(){
+	let m = document.getElementById('rangeInput');
+	m = parseInt(m.value);
+    canvasFunction(m);
+});
+
+function buttonFunction() {
+	let myCanvas = document.getElementById('myCanvas');
+	myCanvas = myCanvas.getContext('2d');
+	myCanvas.clearRect(0, 0, myCanvas.canvas.width, myCanvas.canvas.height);
+}
+
+function rangeInputFunction() {
+	let m = document.getElementById('rangeInput');
+	m = parseInt(m.value);
+	canvasFunction(m);
+}
+
+function canvasFunction(m) {
+	
+	//let marray = [100,200,300,400,500,600,700,800,900,1000,1100,1200,1300,1400,1500,1600];
+
+
+	let myCanvas = document.getElementById('myCanvas');
+	myCanvas = myCanvas.getContext('2d');
+	myCanvas.clearRect(0, 0, myCanvas.canvas.width, myCanvas.canvas.height);
+
+
+	let start_offset = [50,10];
+	let spacing = 20;
+	let x = 0, y = 1;
+	let pos = [start_offset[x],start_offset[y]];
+	let color = "#FF0000";
+
+
+	let meters	= 1600 - 100;
+	let mils	= 622 - 978;
+	let scale	= mils / meters;
+	let meter = m;
+	let a = (meter - 100) * scale;
+	let b = a + 978;
+
+
+	let lines_count = 30;
+	let IsHundred = new Boolean(false);
+	let grd = null;
+
+
+	grd = myCanvas.createLinearGradient(0,515,0,610);
+	grd.addColorStop(1,"green");
+	grd.addColorStop(0,"#E6E6FA");
+
+	// Fill BOTTOM with gradient
+	myCanvas.fillStyle = grd;
+	myCanvas.fillRect(0,515,250,105);
+
+
+
+	grd = myCanvas.createLinearGradient(0,0,0,100);
+	grd.addColorStop(0,"green");
+	grd.addColorStop(1,"#E6E6FA");
+
+	// Fill TOP with gradient
+	myCanvas.fillStyle = grd;
+	myCanvas.fillRect(0,0,250,105);
+
+	for(let i = 0; i <= lines_count; i++) {
+
+		a = (meter - 100) * scale;
+		b = a + 978;
+
+		IsHundred = Boolean(meter%100 == 0);
+
+		myCanvas.beginPath();
+
+		if(IsHundred) {
+			myCanvas.font='20px Courier New Bold';
+			myCanvas.strokeStyle = "#00FF00";
+			myCanvas.fillStyle = "#0000FF";	
+			console.log(myCanvas);
+		}
+		else {
+			myCanvas.font='12px Courier New Bold';
+			myCanvas.strokeStyle = "#000000";
+			myCanvas.fillStyle = "#000000";		
+		}
+
+		pos[y] = i * spacing;
+		pos[y] = start_offset[y] + pos[y];
+
+		myCanvas.moveTo(pos[x],pos[y]);
+		myCanvas.lineTo(pos[x]+150,pos[y]);
+		myCanvas.stroke();
+
+		myCanvas.textBaseline='middle';
+		myCanvas.fillText(meter ,pos[x]-50,pos[y]);
+		myCanvas.fillText(b.toFixed(1) ,pos[x]+150,pos[y]);
+
+
+		myCanvas.closePath();
+
+		meter -= 1;
+
+	}
+
+
+}
+
+
+</script>
+
+</body>
+</html>
