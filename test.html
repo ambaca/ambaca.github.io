@@ -27,7 +27,7 @@ body {
 <input type="button" value="800M" style="position: absolute; left: 350px; margin-top: 320;" onclick="buttonFunction(814)" />
 <input type="button" value="100M" style="position: absolute; left: 350px; margin-top: 590px;" onclick="buttonFunction(130)" />
 <!-- input id="button", type="button" value="asd" onclick="buttonFunction()" / -->
-<input id="rangeInput" class="vranger" type="range" value="1000" min="115" max="1615" oninput="rangeInputFunction()" style="position: absolute;left: 0px; width:600" />
+<input id="rangeInput" class="vranger" type="range" step="1" value="1000" min="115" max="1615" oninput="rangeInputFunction()" style="position: absolute;left: 0px; width:600" />
 <canvas id="myCanvas" width="250" height="620" style="border:1px solid #000000;position: absolute;" /></canvas>
 
 
@@ -50,6 +50,8 @@ function buttonFunction(m) {
 }
 
 function rangeInputFunction() {
+	let element = document.getElementById("myCanvas");
+	element.scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
 	let m = document.getElementById('rangeInput');
 	m = parseInt(m.value);
 	canvasFunction(m);
