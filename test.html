@@ -25,10 +25,23 @@ body {
 
 <body>
 <input type="button" value="1600M" style="position: absolute; left: 350px; margin-top: 10px;" onclick="buttonFunction(1600)" />
-<input type="button" value="800M" style="position: absolute; left: 350px; margin-top: 320;" onclick="buttonFunction(814)" />
+<input type="button" value="1500M" style="position: absolute; left: 350px; margin-top: 48px;" onclick="buttonFunction(1514)" />
+<input type="button" value="1400M" style="position: absolute; left: 350px; margin-top: 86px;" onclick="buttonFunction(1414)" />
+<input type="button" value="1300M" style="position: absolute; left: 350px; margin-top: 125px;" onclick="buttonFunction(1314)" />
+<input type="button" value="1200M" style="position: absolute; left: 350px; margin-top: 164px;" onclick="buttonFunction(1214)" />
+<input type="button" value="1100M" style="position: absolute; left: 350px; margin-top: 203px;" onclick="buttonFunction(1114)" />
+<input type="button" value="1000M" style="position: absolute; left: 350px; margin-top: 241px;" onclick="buttonFunction(1014)" />
+<input type="button" value="900M" style="position: absolute; left: 350px; margin-top: 280;" onclick="buttonFunction(914)" />
+<input type="button" value="800M" style="position: absolute; left: 350px; margin-top: 319;" onclick="buttonFunction(814)" />
+<input type="button" value="700M" style="position: absolute; left: 350px; margin-top: 357;" onclick="buttonFunction(714)" />
+<input type="button" value="600M" style="position: absolute; left: 350px; margin-top: 396;" onclick="buttonFunction(614)" />
+<input type="button" value="500M" style="position: absolute; left: 350px; margin-top: 435;" onclick="buttonFunction(514)" />
+<input type="button" value="400M" style="position: absolute; left: 350px; margin-top: 473;" onclick="buttonFunction(414)" />
+<input type="button" value="300M" style="position: absolute; left: 350px; margin-top: 512;" onclick="buttonFunction(314)" />
+<input type="button" value="200M" style="position: absolute; left: 350px; margin-top: 551;" onclick="buttonFunction(214)" />
 <input type="button" value="100M" style="position: absolute; left: 350px; margin-top: 590px;" onclick="buttonFunction(130)" />
 <!-- input id="button", type="button" value="asd" onclick="buttonFunction()" / -->
-<input id="rangeInput" class="vranger" type="range" step="1" value="1000" min="115" max="1615" oninput="rangeInputFunction()" style="position: absolute;left: 0px; width:600" />
+<input id="rangeInput" class="vranger" type="range" step="1" value="1014" min="115" max="1615" oninput="rangeInputFunction()" style="position: absolute;left: 0px; width:600" />
 <canvas id="myCanvas" width="250" height="620" style="border:1px solid #000000;position: absolute;" /></canvas>
 
 
@@ -54,6 +67,8 @@ function rangeInputFunction() {
 	let element = document.getElementById("myCanvas");
 	element.scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
 	let m = document.getElementById('rangeInput');
+	m.title = "range";
+	console.log(m);
 	m = parseInt(m.value);
 	canvasFunction(m);
 }
