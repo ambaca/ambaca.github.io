@@ -145,8 +145,8 @@ function canvasFunction(m) {
 		pos[y] = i * spacing;
 		pos[y] = start_offset[y] + pos[y];
 
-		myCanvas.moveTo(pos[x],pos[y]);
-		myCanvas.lineTo(pos[x]+150,pos[y]);
+		myCanvas.moveTo(pos[x]-5,pos[y]);
+		myCanvas.lineTo(pos[x]+140,pos[y]);
 		myCanvas.stroke();
 
 		myCanvas.textBaseline='middle';
