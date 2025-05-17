@@ -1,4 +1,4 @@
-﻿/**
+/**
  * vim: set ts=4 :
  * =============================================================================
  * SourceMod (C)2004-2008 AlliedModders LLC.  All rights reserved.
@@ -472,7 +472,6 @@ stock int CharToLower(int chr)
 stock int FindCharInString(const char[] str, char c, bool reverse = false)
 {
 	int len = strlen(str);
-
 	if (!reverse)
 	{
 		for (int i = 0; i < len; i++)
