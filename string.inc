@@ -469,6 +469,33 @@ stock int CharToLower(int chr)
  * @return              The index of the first occurrence of the character 
  *                      in the string, or -1 if the character was not found.
  */
+stock int FindCharInString(const char[] str, char c, bool reverse = false)
+{
+	int len = strlen(str);
+	
+	if (!reverse)
+	{
+		for (int i = 0; i < len; i++)
+		{
+			if (str[i] == c)
+			{
+				return i;
+			}
+		}
+	}
+	else
+	{
+		for (int i = len - 1; i >= 0; i--)
+		{
+			if (str[i] == c)
+			{
+				return i;
+			}
+		}
+	}
+
+	return -1;
+}
 
 /**
  * Concatenates one string onto another.
