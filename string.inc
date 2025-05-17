@@ -486,6 +486,7 @@ stock int FindCharInString(const char[] str, char c, bool reverse = false)
 	else
 	{
 		for (int i = len - 1; i >= 0; i--)
+		
 		{
 			if (str[i] == c)
 			{
