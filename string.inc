@@ -97,7 +97,7 @@ native int strncmp(const char[] str1, const char[] str2, int num, bool caseSensi
 stock int StrCompare(const char[] str1, const char[] str2, bool caseSensitive=true)
 {
 	return strcmp(str1, str2, caseSensitive);
-};
+}
 
 /**
  * Returns whether two strings are equal.
@@ -111,7 +111,7 @@ stock int StrCompare(const char[] str1, const char[] str2, bool caseSensitive=tr
 stock bool StrEqual(const char[] str1, const char[] str2, bool caseSensitive=true)
 {
 	return (strcmp(str1, str2, caseSensitive) == 0);
-};
+}
 
 /**
  * Copies one string to another string.
@@ -134,7 +134,7 @@ native int strcopy(char[] dest, int destLen, const char[] source);
 stock int StrCopy(char[] dest, int destLen, const char[] source)
 {
 	return strcopy(dest, destLen, source);
-};
+}
 
 /**
  * Formats a string according to the SourceMod format rules (see documentation).
@@ -285,7 +285,7 @@ native int BreakString(const char[] source, char[] arg, int argLen);
 stock int StrBreak(const char[] source, char[] arg, int argLen)
 {
 	return BreakString(source, arg, argLen);
-};
+}
 
 /**
  * Removes whitespace characters from the beginning and end of a string.
@@ -440,7 +440,7 @@ stock int CharToUpper(int chr)
 	}
 
 	return chr;
-};
+}
 
 /**
  * Converts an uppercase character to its lowercase counterpart.
@@ -457,7 +457,7 @@ stock int CharToLower(int chr)
 	}
 	
 	return chr;
-};
+}
 
 /**
  * Finds the first occurrence of a character in a string.
@@ -485,7 +485,7 @@ stock int FindCharInString(const char[] str, char c, bool reverse = false)
 	}
 	else
 	{
-		for (int i = len - 1; i >= 0; i--)
+		for (int i = len - 1; i >= 0; i--)
 		{
 			if (str[i] == c)
 			{
@@ -495,7 +495,7 @@ stock int FindCharInString(const char[] str, char c, bool reverse = false)
 	}
 
 	return -1;
-};
+}
 
 /**
  * Concatenates one string onto another.
@@ -514,7 +514,7 @@ stock int StrCat(char[] buffer, int maxlength, const char[] source)
 	}
 	
 	return Format(buffer[len], maxlength-len, "%s", source);
-};
+}
 
 /**
  * Breaks a string into pieces and stores each piece into an array of buffers.
@@ -554,7 +554,7 @@ stock int ExplodeString(const char[] text, const char[] split, char[][] buffers,
 	strcopy(buffers[total++], maxStringLength, text[reloc_idx]);
 
 	return total;
-};
+}
 
 /**
  * Joins an array of strings into one string, with a "join" string inserted in
@@ -590,4 +590,4 @@ stock int ImplodeStrings(const char[][] strings, int numStrings, const char[] jo
 		}
 	}
 	return total;
-};
+}
