@@ -449,3 +449,23 @@ stock int CharToUpper(int chr)
  * @return              Lowercase character on success, 
  *                      no change on failure.
  */
+stock int CharToLower(int chr)
+{
+	if (IsCharUpper(chr))
+	{
+		return (chr | (1<<5));
+	}
+	
+	return chr;
+}
+
+/**
+ * Finds the first occurrence of a character in a string.
+ *
+ * @param str           String.
+ * @param c             Character to search for.
+ * @param reverse       False (default) to search forward, true to search 
+ *                      backward.
+ * @return              The index of the first occurrence of the character 
+ *                      in the string, or -1 if the character was not found.
+ */
