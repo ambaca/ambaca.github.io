@@ -484,3 +484,4 @@ stock int FindCharInString(const char[] str, char c, bool reverse = false)
 		}
 	}
 	else
+	{
