@@ -469,97 +469,30 @@ stock int CharToLower(int chr)
  * @return              The index of the first occurrence of the character 
  *                      in the string, or -1 if the character was not found.
  */
-/**
- * Concatenates one string onto another.
- *
- * @param buffer        String to append to.
- * @param maxlength     Maximum length of entire buffer.
- * @param source        Source string to concatenate.
- * @return              Number of bytes written.
- */
-stock int StrCat(char[] buffer, int maxlength, const char[] source)
+stock int FindCharInString(const char[] str, char c, bool reverse = false)
 {
-	int len = strlen(buffer);
-	if (len >= maxlength)
-	{
-		return 0;
-	}
+	int len = strlen(str);
 	
-	return Format(buffer[len], maxlength-len, "%s", source);
-}
-
-/**
- * Breaks a string into pieces and stores each piece into an array of buffers.
- *
- * @param text              The string to split.
- * @param split             The string to use as a split delimiter.
- * @param buffers           An array of string buffers (2D array).
- * @param maxStrings        Number of string buffers (first dimension size).
- * @param maxStringLength   Maximum length of each string buffer.
- * @param copyRemainder     False (default) discard excess pieces, true to ignore
- *                          delimiters after last piece.
- * @return                  Number of strings retrieved.
- */
-stock int ExplodeString(const char[] text, const char[] split, char[][] buffers, int maxStrings,
-                    int maxStringLength, bool copyRemainder = false)
-{
-	int reloc_idx, idx, total;
-
-	if (maxStrings < 1 || !split[0])
+	if (!reverse)
 	{
-		return 0;
-	}
-
-	while ((idx = SplitString(text[reloc_idx], split, buffers[total], maxStringLength)) != -1)
-	{
-		reloc_idx += idx;
-		if (++total == maxStrings)
+		for (int i = 0; i < len; i++)
 		{
-			if (copyRemainder)
+			if (str[i] == c)
 			{
-				strcopy(buffers[total-1], maxStringLength, text[reloc_idx-idx]);
-			}
-			return total;
-		}
-	}
-
-	strcopy(buffers[total++], maxStringLength, text[reloc_idx]);
-
-	return total;
-}
-
-/**
- * Joins an array of strings into one string, with a "join" string inserted in
- * between each given string.  This function complements ExplodeString.
- *
- * @param strings       An array of strings.
- * @param numStrings    Number of strings in the array.
- * @param join          The join string to insert between each string.
- * @param buffer        Output buffer to write the joined string to.
- * @param maxLength     Maximum length of the output buffer.
- * @return              Number of bytes written to the output buffer.
- */
-stock int ImplodeStrings(const char[][] strings, int numStrings, const char[] join, char[] buffer, int maxLength)
-{
-	int total, length, part_length;
-	int join_length = strlen(join);
-	for (int i=0; i<numStrings; i++)
-	{
-		length = strcopy(buffer[total], maxLength-total, strings[i]);
-		total += length;
-		if (length < part_length)
-		{
-			break;
-		}
-		if (i != numStrings - 1)
-		{
-			length = strcopy(buffer[total], maxLength-total, join);
-			total += length;
-			if (length < join_length)
-			{
-				break;
+				return i;
 			}
 		}
 	}
-	return total;
+	else
+	{
+		for (int i = len - 1; i >= 0; i--)
+		{
+			if (str[i] == c)
+			{
+				return i;
+			}
+		}
+	}
+
+	return -1;
 }
