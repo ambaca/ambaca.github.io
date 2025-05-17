@@ -399,3 +399,100 @@ native int IsCharMB(int chr);
  * @param chr           Character to test.
  * @return              True if character is uppercase, otherwise false.
  */
+native bool IsCharUpper(int chr);
+
+/**
+ * Returns whether an alphabetic character is lowercase.
+ *
+ * @note Multi-byte characters will always return false.
+ *
+ * @param chr           Character to test.
+ * @return              True if character is lowercase, otherwise false.
+ */
+native bool IsCharLower(int chr);
+
+/**
+ * Strips a quote pair off a string if it exists.  That is, the following 
+ * replace rule is applied once:  ^"(.*)"$ -> ^\1$
+ *
+ * Note that the leading and trailing quotes will only be removed if both 
+ * exist.  Otherwise, the string is left unmodified.  This function should 
+ * be considered O(k) (all characters get shifted down).
+ *
+ * @param text          String to modify (in place).
+ * @return              True if string was modified, false if there was no 
+ *                      set of quotes.
+ */
+native bool StripQuotes(char[] text);
+
+/**
+ * Converts a lowercase character to its uppercase counterpart.
+ *
+ * @param chr           Character to convert.
+ * @return              Uppercase character on success, 
+ *                      no change on failure.
+ */
+stock int CharToUpper(int chr)
+{
+	if (IsCharLower(chr))
+	{
+		return (chr & ~(1<<5));
+	}
+
+	return chr;
+}
+
+/**
+ * Converts an uppercase character to its lowercase counterpart.
+ *
+ * @param chr           Character to convert.
+ * @return              Lowercase character on success, 
+ *                      no change on failure.
+ */
+stock int CharToLower(int chr)
+{
+	if (IsCharUpper(chr))
+	{
+		return (chr | (1<<5));
+	}
+	
+	return chr;
+}
+
+/**
+ * Finds the first occurrence of a character in a string.
+ *
+ * @param str           String.
+ * @param c             Character to search for.
+ * @param reverse       False (default) to search forward, true to search 
+ *                      backward.
+ * @return              The index of the first occurrence of the character 
+ *                      in the string, or -1 if the character was not found.
+ */
+stock int FindCharInString(const char[] str, char c, bool reverse = false)
+{
+	int len = strlen(str);
+	
+	if (!reverse)
+	{
+		for (int i = 0; i < len; i++)
+		{
+			if (str[i] == c)
+			{
+				return i;
+			}
+		}
+	}
+	else
+	{
+		for (int i = len - 1; i >= 0; i--)
+		{
+			if (str[i] == c)
+			{
+				return i;
+			}
+		}
+	}
+
+	return -1;
+}
