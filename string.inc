@@ -469,7 +469,6 @@ stock int CharToLower(int chr)
  * @return              The index of the first occurrence of the character 
  *                      in the string, or -1 if the character was not found.
  */
-
 /**
  * Concatenates one string onto another.
  *
@@ -501,10 +500,6 @@ stock int StrCat(char[] buffer, int maxlength, const char[] source)
  *                          delimiters after last piece.
  * @return                  Number of strings retrieved.
  */
-
-//{
-//}
-
 /**
  * Joins an array of strings into one string, with a "join" string inserted in
  * between each given string.  This function complements ExplodeString.
