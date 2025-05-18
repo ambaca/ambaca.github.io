@@ -472,6 +472,7 @@ stock int CharToLower(int chr)
 stock int FindCharInString(const char[] str, char c, bool reverse = false)
 {
 	int len = strlen(str);
+	
 	if (!reverse)
 	{
 		for (int i = 0; i < len; i++)
@@ -492,6 +493,7 @@ stock int FindCharInString(const char[] str, char c, bool reverse = false)
 			}
 		}
 	}
+
 	return -1;
 }
 
@@ -526,18 +528,21 @@ stock int StrCat(char[] buffer, int maxlength, const char[] source)
  *                          delimiters after last piece.
  * @return                  Number of strings retrieved.
  */
- 
 stock int ExplodeString(const char[] text, const char[] split, char[][] buffers, int maxStrings, int maxStringLength, bool copyRemainder = false)
 {
 	int reloc_idx, idx, total;
+
 	if (maxStrings < 1 || !split[0])
 	{
 		return 0;
 	}
+
 	while ((idx = SplitString(text[reloc_idx], split, buffers[total], maxStringLength)) != -1)
 	{
 		reloc_idx += idx;
-		if (++total == maxStrings)
+		total++;
+
+		if (total == maxStrings)
 		{
 			if (copyRemainder)
 			{
@@ -546,7 +551,9 @@ stock int ExplodeString(const char[] text, const char[] split, char[][] buffers,
 			return total;
 		}
 	}
-	strcopy(buffers[total++], maxStringLength, text[reloc_idx]);
+
+	strcopy(buffers[total], maxStringLength, text[reloc_idx]);
+	total++;
 
 	return total;
 }
