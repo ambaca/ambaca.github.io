@@ -496,7 +496,6 @@ stock int FindCharInString(const char[] str, char c, bool reverse = false)
 
 	return -1;
 }
-
 /**
  * Concatenates one string onto another.
  *
@@ -555,7 +554,6 @@ stock int ExplodeString(const char[] text, const char[] split, char[][] buffers,
 
 	return total;
 }
-
 /**
  * Joins an array of strings into one string, with a "join" string inserted in
  * between each given string.  This function complements ExplodeString.
