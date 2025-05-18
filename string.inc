@@ -501,7 +501,7 @@ stock int StrCat(char[] buffer, int maxlength, const char[] source)
  *                          delimiters after last piece.
  * @return                  Number of strings retrieved.
  */
-//stock int ExplodeString(const char[] text, const char[] split, char[][] buffers, int maxStrings, int maxStringLength, bool copyRemainder = false)
+
 //{
 //}
 
