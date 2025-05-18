@@ -510,20 +510,6 @@ stock int StrCat(char[] buffer, int maxlength, const char[] source)
 //		return 0;
 //	}
 //
-//	while ((idx = SplitString(text[reloc_idx], split, buffers[total], maxStringLength)) != -1)
-//	{
-//		reloc_idx += idx;
-//		total++;
-//
-//		if (total == maxStrings)
-//		{
-//			if (copyRemainder)
-//			{
-//				strcopy(buffers[total-1], maxStringLength, text[reloc_idx-idx]);
-//			}
-//			return total;
-//		}
-//	}
 //
 //	strcopy(buffers[total], maxStringLength, text[reloc_idx]);
 //	total++;
