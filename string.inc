@@ -469,6 +469,34 @@ stock int CharToLower(int chr)
  * @return              The index of the first occurrence of the character 
  *                      in the string, or -1 if the character was not found.
  */
+stock int FindCharInString(const char[] str, char c, bool reverse = false)
+{
+	int len = strlen(str);
+	
+	if (!reverse)
+	{
+		for (int i = 0; i < len; i++)
+		{
+			if (str[i] == c)
+			{
+				return i;
+			}
+		}
+	}
+	else
+	{
+		for (int i = len - 1; i >= 0; i--)
+		{
+			if (str[i] == c)
+			{
+				return i;
+			}
+		}
+	}
+
+	return -1;
+}
+
 /**
  * Concatenates one string onto another.
  *
@@ -500,6 +528,34 @@ stock int StrCat(char[] buffer, int maxlength, const char[] source)
  *                          delimiters after last piece.
  * @return                  Number of strings retrieved.
  */
+stock int ExplodeString(const char[] text, const char[] split, char[][] buffers, int maxStrings,
+                    int maxStringLength, bool copyRemainder = false)
+{
+	int reloc_idx, idx, total;
+
+	if (maxStrings < 1 || !split[0])
+	{
+		return 0;
+	}
+
+	while ((idx = SplitString(text[reloc_idx], split, buffers[total], maxStringLength)) != -1)
+	{
+		reloc_idx += idx;
+		if (++total == maxStrings)
+		{
+			if (copyRemainder)
+			{
+				strcopy(buffers[total-1], maxStringLength, text[reloc_idx-idx]);
+			}
+			return total;
+		}
+	}
+
+	strcopy(buffers[total++], maxStringLength, text[reloc_idx]);
+
+	return total;
+}
+
 /**
  * Joins an array of strings into one string, with a "join" string inserted in
  * between each given string.  This function complements ExplodeString.
