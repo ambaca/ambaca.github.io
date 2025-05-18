@@ -503,18 +503,6 @@ stock int StrCat(char[] buffer, int maxlength, const char[] source)
  */
 //stock int ExplodeString(const char[] text, const char[] split, char[][] buffers, int maxStrings, int maxStringLength, bool copyRemainder = false)
 //{
-//	int reloc_idx, idx, total;
-//
-//	if (maxStrings < 1 || !split[0])
-//	{
-//		return 0;
-//	}
-//
-//
-//	strcopy(buffers[total], maxStringLength, text[reloc_idx]);
-//	total++;
-//
-//	return total;
 //}
 
 /**
