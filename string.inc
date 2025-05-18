@@ -468,7 +468,7 @@ stock int CharToLower(int chr)
  *                      backward.
  * @return              The index of the first occurrence of the character 
  *                      in the string, or -1 if the character was not found.
- */stock
+ */
 {
 }
 /**
